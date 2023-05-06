@@ -1,20 +1,15 @@
 import { NextPage } from "next";
-import "./style.css";
+import Card from "./card";
 
 const GiftPage: NextPage = () => {
-  const giftMessage =
-    "Olá, gostaria de comprar um cesta basica para o casal Fabio e Martha como presente de casamento.";
   return (
-    <div className="Page flex flex-col items-center h-screen w-full text-lg text-gray-700">
+    <div className="flex flex-col items-center h-full w-full bg-[#f7f7f7] font-mont pb-20">
       <h1 className="mt-36 mb-14 text-black text-2xl">Lista de Casamento</h1>
-      Como Presente gostariamos de receber cestas basicas para doação.
-      <a
-        href={`https://wa.me/553232738144?text=${giftMessage}`}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Presentear
-      </a>
+      <span className="text-lg text-gray-700 max-w-md">
+        Se você deseja nos presentear no nosso casamento, você pode comprar uma
+        cesta basica, que será doada para uma instituição de caridade.
+      </span>
+      <Card />
     </div>
   );
 };
