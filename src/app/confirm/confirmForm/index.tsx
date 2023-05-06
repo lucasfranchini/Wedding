@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import Select, { SingleValue } from "react-select";
 
 const ConfirmForm: React.FC = () => {
@@ -12,10 +12,16 @@ const ConfirmForm: React.FC = () => {
     { value: 2, label: "2" },
     { value: 3, label: "3" },
   ];
-  console.log(number);
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(names);
+    const validNames = names.filter((name) => name);
+    console.log(validNames);
+  };
+  const fillInput = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = event.target;
+    const newNames = [...names];
+    newNames[Number(name)] = value;
+    setNames(newNames);
   };
   return (
     <form
@@ -28,7 +34,7 @@ const ConfirmForm: React.FC = () => {
         onChange={(value) => setNumber(value)}
       />
       {Array.from({ length: number?.value || 1 }).map((_, index) => (
-        <input key={index} />
+        <input key={index} name={`${index}`} onChange={fillInput} />
       ))}
       <button type="submit">teste</button>
     </form>
