@@ -6,9 +6,9 @@ export default function Home() {
     backgroundImage: "url(/fabioEMartha.jpeg)",
   };
   return (
-    <main>
+    <main className="pb-10 bg-[#f7f7f7]">
       <div
-        className="flex justify-end items-center h-96 sm:h-screen bg-cover bg-opacity-60 bg-no-repeat"
+        className="flex justify-end items-center h-96 sm:h-screen bg-cover bg-opacity-60 bg-no-repeat "
         style={style}
       >
         <div className="hidden xl:block xl:mr-10">
