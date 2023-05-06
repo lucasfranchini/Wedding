@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import ConfirmForm from "./confirmForm";
 
 const ConfirmPage: NextPage = () => {
   return (
@@ -7,6 +8,7 @@ const ConfirmPage: NextPage = () => {
       <span className="text-lg text-gray-700">
         Confirme sua presença nessa data tão especial para nós.
       </span>
+      <ConfirmForm />
     </div>
   );
 };
