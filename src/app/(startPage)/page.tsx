@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Countdown from "./countdown";
 
 export default function Home() {
   const style = {
@@ -17,6 +18,10 @@ export default function Home() {
       <div className="flex justify-center xl:hidden ">
         <Image src="/FMComplete.png" alt="F&M" width={500} height={40} />
       </div>
+      <span className="flex justify-center mt-20">
+        CONTAGEM REGRESSIVA PARA O GRANDE DIA
+      </span>
+      <Countdown targetDate="2023-07-14T19:00:00-03:00" />
     </main>
   );
 }
