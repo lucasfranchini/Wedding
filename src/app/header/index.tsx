@@ -11,7 +11,7 @@ const Header: React.FC = () => {
       <Image src="/FMClear.png" alt="F&M" width={100} height={40} />
       <div
         className={`flex items-center gap-5  ${
-          pathname === "/" && "text-shadow shadow-black"
+          pathname === "/" && "[text-shadow:_2px_2px_0_rgb(0_0_0_/_60%)]"
         }`}
       >
         <Link href="/">Inicio</Link>
