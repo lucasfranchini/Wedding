@@ -8,5 +8,5 @@ export default function GiftsLayou({
 }: {
   children: React.ReactNode;
 }) {
-  return <div>{children}s</div>;
+  return <div>{children}</div>;
 }
