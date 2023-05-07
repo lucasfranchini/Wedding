@@ -17,9 +17,12 @@ const ConfirmForm: React.FC = () => {
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const validNames = names.filter((name) => name);
-    console.log(validNames);
     fetch("/api/addGuest", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ names: validNames }),
     }).then(() => console.log("ok"));
   };
   const fillInput = (event: ChangeEvent<HTMLInputElement>) => {
