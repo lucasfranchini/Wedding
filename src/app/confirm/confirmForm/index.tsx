@@ -51,7 +51,7 @@ const ConfirmForm: React.FC = () => {
             key={index}
             name={`${index}`}
             onChange={fillInput}
-            className="w-2/3 border h-10 rounded-lg"
+            className="w-2/3 border h-10 rounded-lg outline-none text-center text-black"
           />
         ))}
       </div>
