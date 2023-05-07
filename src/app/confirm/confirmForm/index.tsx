@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Select, { SingleValue } from "react-select";
 
@@ -9,6 +10,8 @@ const ConfirmForm: React.FC<{
   const [number, setNumber] = useState<
     SingleValue<{ value: number; label: string }>
   >({ value: 1, label: "1" });
+  const [isLoading, setIsLoading] = useState(false);
+
   const options = [
     { value: 1, label: "1" },
     { value: 2, label: "2" },
@@ -18,6 +21,7 @@ const ConfirmForm: React.FC<{
   ];
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsLoading(true);
     const validNames = names.filter((name) => name);
     fetch("/api/addGuest", {
       method: "POST",
@@ -25,7 +29,10 @@ const ConfirmForm: React.FC<{
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ names: validNames }),
-    }).then(() => setConfirmed(true));
+    }).then(() => {
+      setConfirmed(true);
+      setIsLoading(false);
+    });
   };
   const fillInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
@@ -58,10 +65,15 @@ const ConfirmForm: React.FC<{
         ))}
       </div>
       <button
-        className=" w-1/2 p-4 text-white bg-[#c58d69] text-center rounded mt-5"
+        className=" w-1/2 p-4 text-white bg-[#c58d69] text-center rounded mt-5 flex justify-center"
         type="submit"
+        disabled={isLoading}
       >
-        Enviar Lista
+        {isLoading ? (
+          <Image alt="carregando" width={15} height={15} src="/loading.svg" />
+        ) : (
+          "Enviar Lista"
+        )}
       </button>
     </form>
   );
