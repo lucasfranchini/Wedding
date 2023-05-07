@@ -18,6 +18,9 @@ const ConfirmForm: React.FC = () => {
     event.preventDefault();
     const validNames = names.filter((name) => name);
     console.log(validNames);
+    fetch("/api/addGuest", {
+      method: "POST",
+    }).then(() => console.log("ok"));
   };
   const fillInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
