@@ -35,7 +35,7 @@ const ConfirmForm: React.FC<{
   };
   return (
     <form
-      className="bg-white w-1/3 mt-16 flex flex-col items-center p-6 rounded-md"
+      className="bg-white md:w-1/3 mt-16 flex flex-col items-center p-6 rounded-md"
       onSubmit={submitForm}
     >
       <div className="flex flex-col items-center gap-5 ">
