@@ -2,7 +2,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import Select, { SingleValue } from "react-select";
 
-const ConfirmForm: React.FC = () => {
+const ConfirmForm: React.FC<{
+  setConfirmed: (isValid: boolean) => void;
+}> = ({ setConfirmed }) => {
   const [names, setNames] = useState<string[]>([]);
   const [number, setNumber] = useState<
     SingleValue<{ value: number; label: string }>
@@ -23,7 +25,7 @@ const ConfirmForm: React.FC = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ names: validNames }),
-    }).then(() => console.log("ok"));
+    }).then(() => setConfirmed(true));
   };
   const fillInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
