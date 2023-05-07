@@ -11,6 +11,8 @@ const ConfirmForm: React.FC = () => {
     { value: 1, label: "1" },
     { value: 2, label: "2" },
     { value: 3, label: "3" },
+    { value: 4, label: "4" },
+    { value: 5, label: "5" },
   ];
   const submitForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -25,18 +27,34 @@ const ConfirmForm: React.FC = () => {
   };
   return (
     <form
-      className="bg-white w-1/3 mt-16 flex flex-col items-center"
+      className="bg-white w-1/3 mt-16 flex flex-col items-center p-6 rounded-md"
       onSubmit={submitForm}
     >
-      <Select
-        options={options}
-        value={number}
-        onChange={(value) => setNumber(value)}
-      />
-      {Array.from({ length: number?.value || 1 }).map((_, index) => (
-        <input key={index} name={`${index}`} onChange={fillInput} />
-      ))}
-      <button type="submit">teste</button>
+      <div className="flex flex-col items-center gap-5 ">
+        diga quantos convidades virão:
+        <Select
+          options={options}
+          value={number}
+          onChange={(value) => setNumber(value)}
+        />
+      </div>
+      <div className="flex flex-col items-center gap-3 mt-6 w-full">
+        Digite os nomes dos convidados:
+        {Array.from({ length: number?.value || 1 }).map((_, index) => (
+          <input
+            key={index}
+            name={`${index}`}
+            onChange={fillInput}
+            className="w-2/3 border h-10 rounded-lg"
+          />
+        ))}
+      </div>
+      <button
+        className=" w-1/2 p-4 text-white bg-[#c58d69] text-center rounded mt-5"
+        type="submit"
+      >
+        Enviar Lista
+      </button>
     </form>
   );
 };
